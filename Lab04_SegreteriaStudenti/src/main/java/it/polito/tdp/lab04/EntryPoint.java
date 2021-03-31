@@ -3,6 +3,7 @@ package it.polito.tdp.lab04;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
+import it.polito.tdp.lab04.model.Model;
 import it.polito.tdp.lab04.FXMLController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,12 +27,14 @@ public class EntryPoint extends Application {
         /*
 		 * Create and set the model here!
 		 */
-		// controller.setModel();
-        
+        Model model = new Model();
+        controller = loader.getController();
+        controller.setModel(model);
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();
+        
     }
 
     /**
