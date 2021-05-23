@@ -34,4 +34,14 @@ public class Model {
 	public List<Corso> corsiPerStudente(Integer matricola){
 		return studenteDao.corsiPerStudente(matricola);
 	}
+	
+	public boolean studenteSegueCorso(Integer matricola, Corso corso) {
+		boolean ritorno = false;
+		for(Corso c: this.corsiPerStudente(matricola)) {
+			if(c.getCodins().equals(corso.getCodins())) {
+				ritorno = true;
+			}
+		}
+		return ritorno;
+	}
 }

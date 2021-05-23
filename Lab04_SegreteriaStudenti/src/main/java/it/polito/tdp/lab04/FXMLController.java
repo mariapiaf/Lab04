@@ -149,6 +149,30 @@ public class FXMLController {
     @FXML
     void doIscrivi(ActionEvent event) { // cerca se lo studente inserito è iscritto al corso selezionato
     	txtRisultato.clear();
+
+    	String matricolaStringa = txtMatricola.getText();
+    	Integer matricola = 0;
+    	
+    	try {
+    		matricola = Integer.parseInt(matricolaStringa);
+    	} catch(NumberFormatException ne) {
+    		txtRisultato.setText("Devi inserire un numero di matricola");
+    		return;
+    	} catch(NullPointerException e) {
+    		txtRisultato.setText("Devi inserire un numero di matricola");
+    		return;
+    	}
+    	
+    	if(!this.model.studentePresenteNelDatabase(matricola)) {
+    		txtRisultato.appendText("Lo studente non è presente nel database");
+    		return;
+    	}
+    	if(this.model.studenteSegueCorso(matricola, boxCorsi.getValue())) {
+    		txtRisultato.setText("Lo studente segue il corso!");
+    	}
+    	else {
+    		txtRisultato.setText("Lo studente NON è iscritto al corso!");
+    	}
     	
     }
 

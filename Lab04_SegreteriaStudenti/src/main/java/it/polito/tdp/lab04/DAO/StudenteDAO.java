@@ -107,4 +107,34 @@ public class StudenteDAO {
 		return corsi;
 		
 	}
+	
+	/*public boolean studenteSegueCorso(Integer matricola, Corso corso) {
+		String sql = "SELECT s.matricola, c.codins "
+				+ "FROM studente s, iscrizione i, corso c "
+				+ "WHERE i.matricola = s.matricola AND i.codins = c.codins AND s.matricola = ? AND c.codins = ?";
+		
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, matricola);
+			ResultSet rs = st.executeQuery();
+	
+			if(rs.next()) {
+				rs.close();
+				st.close();
+				conn.close();
+				return true;
+			}
+			else {
+				rs.close();
+				st.close();
+				conn.close();
+				return false;
+			}
+
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+	}*/
 }
